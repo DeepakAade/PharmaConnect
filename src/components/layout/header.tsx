@@ -1,3 +1,4 @@
+import { CurrencySelector } from '@/components/currency/currency-selector';
 import { SidebarTrigger } from '@/components/ui/sidebar';
 
 type HeaderProps = {
@@ -16,6 +17,9 @@ export function Header({ title, description }: HeaderProps) {
         {description && (
           <p className="text-sm text-muted-foreground">{description}</p>
         )}
+      </div>
+      <div className="flex items-center gap-4">
+        <CurrencySelector />
       </div>
     </header>
   );

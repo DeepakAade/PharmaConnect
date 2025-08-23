@@ -11,12 +11,17 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Factory, Pill } from 'lucide-react';
+import { useCurrency } from '@/context/currency-context';
+import { convertCurrency, formatCurrency } from '@/lib/utils';
 
 type MedicineCardProps = {
   medicine: Medicine;
 };
 
 export function MedicineCard({ medicine }: MedicineCardProps) {
+  const { currency } = useCurrency();
+  const convertedPrice = convertCurrency(medicine.price, 'USD', currency);
+
   return (
     <Card className="flex flex-col overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
       <CardHeader className="p-0">
@@ -47,7 +52,7 @@ export function MedicineCard({ medicine }: MedicineCardProps) {
       </CardContent>
       <CardFooter className="flex items-center justify-between p-4 pt-0">
         <p className="text-xl font-semibold text-primary">
-          ${medicine.price.toFixed(2)}
+          {formatCurrency(convertedPrice, currency)}
         </p>
         <Button>View Details</Button>
       </CardFooter>
