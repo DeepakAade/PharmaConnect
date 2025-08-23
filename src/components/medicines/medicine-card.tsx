@@ -12,10 +12,11 @@ import {
 } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Factory, Pill, ShoppingCart } from 'lucide-react';
+import { Factory, Pill, ShoppingCart, Info } from 'lucide-react';
 import { useCurrency } from '@/context/currency-context';
 import { convertCurrency, formatCurrency } from '@/lib/utils';
 import { useCart } from '@/context/cart-context';
+import Link from 'next/link';
 
 
 type MedicineCardProps = {
@@ -42,6 +43,11 @@ export function MedicineCard({ medicine }: MedicineCardProps) {
             className="object-cover"
             data-ai-hint={`${medicine.form} medicine`}
           />
+           {!medicine.inStock && (
+            <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
+              <Badge variant="destructive" className="text-lg">Out of Stock</Badge>
+            </div>
+          )}
         </div>
         <div className="p-4">
           <CardTitle className="text-lg font-headline">{medicine.name}</CardTitle>
@@ -63,10 +69,19 @@ export function MedicineCard({ medicine }: MedicineCardProps) {
         <p className="text-xl font-semibold text-primary">
           {formatCurrency(convertedPrice, currency)}
         </p>
-        <Button onClick={handleAddToCart}>
-          <ShoppingCart className="w-4 h-4 mr-2" />
-          Add to Cart
-        </Button>
+        {medicine.inStock ? (
+          <Button onClick={handleAddToCart}>
+            <ShoppingCart className="w-4 h-4 mr-2" />
+            Add to Cart
+          </Button>
+        ) : (
+          <Button asChild variant="secondary">
+            <Link href="/find-manufacturer">
+                <Info className="w-4 h-4 mr-2" />
+                Find Alternatives
+            </Link>
+          </Button>
+        )}
       </CardFooter>
     </Card>
   );

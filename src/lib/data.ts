@@ -1,4 +1,4 @@
-import type { Medicine } from '@/types';
+import type { Medicine, Manufacturer } from '@/types';
 
 export const medicines: Medicine[] = [
   {
@@ -9,6 +9,7 @@ export const medicines: Medicine[] = [
     therapeuticCategory: 'Analgesic',
     imageUrl: 'https://placehold.co/400x300.png',
     price: 5.99,
+    inStock: true,
   },
   {
     id: '2',
@@ -18,6 +19,7 @@ export const medicines: Medicine[] = [
     therapeuticCategory: 'Antibiotic',
     imageUrl: 'https://placehold.co/400x300.png',
     price: 12.5,
+    inStock: false,
   },
   {
     id: '3',
@@ -27,6 +29,7 @@ export const medicines: Medicine[] = [
     therapeuticCategory: 'Analgesic',
     imageUrl: 'https://placehold.co/400x300.png',
     price: 8.75,
+    inStock: true,
   },
   {
     id: '4',
@@ -36,6 +39,7 @@ export const medicines: Medicine[] = [
     therapeuticCategory: 'Cardiovascular',
     imageUrl: 'https://placehold.co/400x300.png',
     price: 25.0,
+    inStock: true,
   },
   {
     id: '5',
@@ -45,6 +49,7 @@ export const medicines: Medicine[] = [
     therapeuticCategory: 'Respiratory',
     imageUrl: 'https://placehold.co/400x300.png',
     price: 18.2,
+    inStock: false,
   },
   {
     id: '6',
@@ -54,6 +59,7 @@ export const medicines: Medicine[] = [
     therapeuticCategory: 'Gastrointestinal',
     imageUrl: 'https://placehold.co/400x300.png',
     price: 15.99,
+    inStock: true,
   },
   {
     id: '7',
@@ -63,6 +69,7 @@ export const medicines: Medicine[] = [
     therapeuticCategory: 'Antiviral',
     imageUrl: 'https://placehold.co/400x300.png',
     price: 22.0,
+    inStock: true,
   },
   {
     id: '8',
@@ -72,5 +79,13 @@ export const medicines: Medicine[] = [
     therapeuticCategory: 'Antibiotic',
     imageUrl: 'https://placehold.co/400x300.png',
     price: 13.45,
+    inStock: true,
   },
+];
+
+export const manufacturers: Manufacturer[] = [
+    { id: '1', name: 'Pharma Inc.', location: 'New York, USA', logoUrl: 'https://placehold.co/100x100.png' },
+    { id: '2', name: 'MediHealth', location: 'London, UK', logoUrl: 'https://placehold.co/100x100.png' },
+    { id: '3', name: 'HealthWell', location: 'Paris, France', logoUrl: 'https://placehold.co/100x100.png' },
+    { id: '4', name: 'BreatheEasy', location: 'Tokyo, Japan', logoUrl: 'https://placehold.co/100x100.png' },
 ];

@@ -9,6 +9,7 @@ import {
   Factory,
   ScanLine,
   ShoppingCart,
+  Search,
 } from 'lucide-react';
 import {
   SidebarContent,
@@ -96,6 +97,18 @@ export function AppSidebar() {
               <Link href="/scan">
                 <ScanLine />
                 <span>Scan Receipt</span>
+              </Link>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+          <SidebarMenuItem>
+            <SidebarMenuButton
+              asChild
+              isActive={isActive('/find-manufacturer')}
+              tooltip="Find Manufacturer"
+            >
+              <Link href="/find-manufacturer">
+                <Search />
+                <span>Find Manufacturer</span>
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>

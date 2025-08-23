@@ -6,6 +6,7 @@ export type Medicine = {
   therapeuticCategory: 'Analgesic' | 'Antibiotic' | 'Antiviral' | 'Cardiovascular' | 'Respiratory' | 'Gastrointestinal';
   imageUrl: string;
   price: number;
+  inStock: boolean;
 };
 
 export type Manufacturer = {
