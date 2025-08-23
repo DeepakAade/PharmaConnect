@@ -8,6 +8,7 @@ import {
   Lightbulb,
   Factory,
   BotMessageSquare,
+  ScanLine,
 } from 'lucide-react';
 import {
   SidebarContent,
@@ -64,6 +65,18 @@ export function AppSidebar() {
               <Link href="/suggestions">
                 <BotMessageSquare />
                 <span>AI Suggestions</span>
+              </Link>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+          <SidebarMenuItem>
+            <SidebarMenuButton
+              asChild
+              isActive={isActive('/scan')}
+              tooltip="Scan Receipt"
+            >
+              <Link href="/scan">
+                <ScanLine />
+                <span>Scan Receipt</span>
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
