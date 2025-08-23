@@ -43,11 +43,13 @@ const prompt = ai.definePrompt({
   name: 'scanReceiptPrompt',
   input: { schema: ScanReceiptInputSchema },
   output: { schema: ScanReceiptOutputSchema },
-  prompt: `You are an expert at reading medical receipts.
+  prompt: `You are an expert at reading medical receipts, including deciphering handwritten notes from doctors.
   Analyze the following image of a doctor's receipt and extract the following information:
   - Patient's Name
   - Doctor's Name
   - A list of all prescribed medications, including their name, dosage, and quantity.
+
+  The receipt may contain both printed text and handwritten prescriptions. Pay close attention to any handwritten information.
 
   If any information is not present, leave the corresponding field empty.
   Photo: {{media url=photoDataUri}}`,
