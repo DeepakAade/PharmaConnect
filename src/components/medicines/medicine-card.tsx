@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 import type { Medicine } from '@/types';
 import {
@@ -10,9 +12,11 @@ import {
 } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Factory, Pill } from 'lucide-react';
+import { Factory, Pill, ShoppingCart } from 'lucide-react';
 import { useCurrency } from '@/context/currency-context';
 import { convertCurrency, formatCurrency } from '@/lib/utils';
+import { useCart } from '@/context/cart-context';
+
 
 type MedicineCardProps = {
   medicine: Medicine;
@@ -20,7 +24,12 @@ type MedicineCardProps = {
 
 export function MedicineCard({ medicine }: MedicineCardProps) {
   const { currency } = useCurrency();
+  const { addToCart } = useCart();
   const convertedPrice = convertCurrency(medicine.price, 'USD', currency);
+  
+  const handleAddToCart = () => {
+    addToCart(medicine);
+  };
 
   return (
     <Card className="flex flex-col overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
@@ -54,7 +63,10 @@ export function MedicineCard({ medicine }: MedicineCardProps) {
         <p className="text-xl font-semibold text-primary">
           {formatCurrency(convertedPrice, currency)}
         </p>
-        <Button>View Details</Button>
+        <Button onClick={handleAddToCart}>
+          <ShoppingCart className="w-4 h-4 mr-2" />
+          Add to Cart
+        </Button>
       </CardFooter>
     </Card>
   );

@@ -5,10 +5,10 @@ import { usePathname } from 'next/navigation';
 import {
   Pill,
   LayoutDashboard,
-  Lightbulb,
-  Factory,
   BotMessageSquare,
+  Factory,
   ScanLine,
+  ShoppingCart,
 } from 'lucide-react';
 import {
   SidebarContent,
@@ -19,9 +19,11 @@ import {
   SidebarFooter,
 } from '@/components/ui/sidebar';
 import { Button } from '../ui/button';
+import { useCart } from '@/context/cart-context';
 
 export function AppSidebar() {
   const pathname = usePathname();
+  const { cartCount } = useCart();
 
   const isActive = (path: string) => {
     return pathname === path;
@@ -65,6 +67,23 @@ export function AppSidebar() {
               <Link href="/suggestions">
                 <BotMessageSquare />
                 <span>AI Suggestions</span>
+              </Link>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+           <SidebarMenuItem>
+            <SidebarMenuButton
+              asChild
+              isActive={isActive('/cart')}
+              tooltip="My Cart"
+            >
+              <Link href="/cart">
+                <ShoppingCart />
+                <span>My Cart</span>
+                 {cartCount > 0 && (
+                  <span className="ml-auto bg-primary text-primary-foreground text-xs font-bold px-2 py-0.5 rounded-full">
+                    {cartCount}
+                  </span>
+                )}
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>

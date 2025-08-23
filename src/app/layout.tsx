@@ -4,6 +4,7 @@ import { SidebarProvider, Sidebar, SidebarInset } from '@/components/ui/sidebar'
 import { AppSidebar } from '@/components/layout/app-sidebar';
 import { Toaster } from '@/components/ui/toaster';
 import { CurrencyProvider } from '@/context/currency-context';
+import { CartProvider } from '@/context/cart-context';
 
 export const metadata: Metadata = {
   title: 'PharmaConnect',
@@ -31,15 +32,17 @@ export default function RootLayout({
         />
       </head>
       <body className="font-body antialiased">
-        <CurrencyProvider>
-          <SidebarProvider>
-            <Sidebar>
-              <AppSidebar />
-            </Sidebar>
-            <SidebarInset>{children}</SidebarInset>
-          </SidebarProvider>
-          <Toaster />
-        </CurrencyProvider>
+        <CartProvider>
+          <CurrencyProvider>
+            <SidebarProvider>
+              <Sidebar>
+                <AppSidebar />
+              </Sidebar>
+              <SidebarInset>{children}</SidebarInset>
+            </SidebarProvider>
+            <Toaster />
+          </CurrencyProvider>
+        </CartProvider>
       </body>
     </html>
   );
